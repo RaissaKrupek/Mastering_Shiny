@@ -52,6 +52,50 @@ actionButton("drink", "Drink me!", icon = icon("cocktail"))
 ##To span the entire width of the element "btn-block"
 
 
+#Exercise 1: When space is at a premium, it’s useful to label text boxes using a placeholder
+#that appears inside the text entry area. How do you call textInput() to generate
+#the following UI? -> solution 
+
+library(shiny)
+ui <- fluidPage(
+  textInput("name", "", "", placeholder = "Your name")
+)
+server <- function(input, output, session){
+}
+shinyApp(ui, server)
+  
+#Exercise 2: Carefully read the documentation for sliderInput() to figure out how to create a date slider
+
+library(shiny)
+ui <- fluidPage(
+  sliderInput("dates", "When should we deliver?", 
+              value = as.Date("2020-09-17"), 
+              min = as.Date("2020-09-16"), 
+              max = as.Date("2020-09-23"))
+)
+server <- function(input, output, session){
+}
+shinyApp(ui, server)
+
+#Exercise 3: Create a slider input to select values between 0 and 100 where the interval
+# between each selectable value on the slider is 5. Then, add animation to the input
+# widget so when the user presses play, the input widget scrolls through the range
+# automatically.
+
+library(shiny)
+ui <- fluidPage(
+  sliderInput("values", "select a number", 
+              value = 50, 
+              min = 0, 
+              max = 100,
+              step = 5,
+              animate = TRUE)
+)
+server <- function(input, output, session){
+}
+shinyApp(ui, server)
+
+
 ########################OUTPUTS##############################
 
 #TEXT
