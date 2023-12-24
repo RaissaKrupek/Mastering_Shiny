@@ -138,3 +138,41 @@ server <- function(input, output, session) {
   output$plot <- renderPlot(plot(1:5), res = 96)
 }
 shinyApp(ui, server)
+
+
+# Exercise 1: Which of textOutput() and verbatimTextOutput() should each of the follow‐
+#ing render functions be paired with?
+
+#renderPrint(summary(mtcars)) --> verbatimTextOutput()
+#renderText("Good morning!") --> textOutput()
+#renderPrint(t.test(1:5, 2:6)) --> verbatimTextOutput()
+#renderText(str(lm(mpg ~ wt, data = mtcars))) --> textOutput()
+
+# Exercise 2: Re-create the Shiny app from “Plots” on page 25, this time setting height to 300px
+#and width to 700px. Set the plot “alt” text so that a visually impaired user can tell
+#that it’s a scatterplot of five random numbers.
+
+library(shiny)
+ui <- fluidPage(
+  plotOutput("plot", width = "700px", height = "300px", alt = "Scatterplot of numbers from 1 to 5")
+)
+server <- function(input, output, session) {
+  output$plot <- renderPlot(plot(1:5), res = 96)
+}
+shinyApp(ui, server)
+
+# Exercise 3: Update the options in the call to renderDataTable() so that the data is displayed
+#but all other controls are suppressed (i.e., remove the search, ordering, and filtering commands).
+
+library(shiny)
+ui <- fluidPage(
+dataTableOutput("table")
+)
+server <- function(input, output, session) {
+  output$table <- renderDataTable(mtcars, options = list(pageLength = 5,
+                                                         searching = FALSE,  # Suppress search bar
+                                                         ordering = FALSE,   # Disable ordering
+                                                         filtering = FALSE)) # Suppress filtering
+}
+shinyApp(ui, server)
+
