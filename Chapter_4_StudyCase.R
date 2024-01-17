@@ -3,6 +3,10 @@ library(vroom)
 library(tidyverse)
 
 ##Data frames em download
+# download("injuries.tsv.gz")
+# download("population.tsv")
+# download("products.tsv")
+
 
 selected <- injuries %>% filter(prod_code == 649)
 nrow(selected)
