@@ -169,7 +169,7 @@ server <- function(input, output, session) {
 shinyApp(ui, server)
 
 
-####################Narrative#####################
+####################Add Narrative#####################
 
 prod_codes <- setNames(products$prod_code, products$title)
 library(shiny)
