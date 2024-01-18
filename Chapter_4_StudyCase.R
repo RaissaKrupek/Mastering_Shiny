@@ -76,6 +76,7 @@ ui <- fluidPage(
 
 server <- function(input, output, session) {
   selected <- reactive(injuries %>% filter(prod_code == input$code))
+  
   output$diag <- renderTable(
     selected() %>% count(diag, wt = weight, sort = TRUE)
   )
